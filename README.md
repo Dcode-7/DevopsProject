@@ -10,8 +10,53 @@ Dev Forum is an online platform where software developers can showcase their por
 - Shadcn/UI
 - Tailwind CSS
 - Prisma/Postgres
+- Docker (for containerized setup)
 
-## Setup & Installation
+---
+
+# Setup & Installation
+
+## Option 1: Recommended (Docker Setup)
+
+> Prerequisite: Install Docker Desktop (Windows/Mac) or Docker Engine (Linux)
+
+### Clone repository
+
+```cmd
+git clone https://github.com/saifulshihab/dev-forum.git
+cd dev-forum
+```
+
+### Configure environment file
+
+```cmd
+cp .env.example .env
+```
+
+Edit `.env` and set required values.
+
+### Run with Docker
+
+```cmd
+docker compose up --build
+```
+
+### Access Application
+
+```text
+http://localhost:3000
+```
+
+This method automatically starts:
+
+- Dev Forum application
+- PostgreSQL database
+
+No need to manually install Node.js or PostgreSQL.
+
+---
+
+## Option 2: Manual Local Setup
 
 ### Clone the repository
 
@@ -28,47 +73,49 @@ npm install
 
 ### Environment variables
 
-There is an .env.example file. Copy it to .env.
+There is an `.env.example` file. Copy it to `.env`
 
 ```cmd
 cp .env.example .env
 ```
 
-Open .env and set all necessary values.
+Open `.env` and set all necessary values.
 
 ### Database setup with Prisma
 
-- Generate the Prisma client:
+Generate Prisma client:
 
 ```cmd
 npx prisma generate
 ```
 
-- Run migrations (if any) to set up database schema:
+Run migrations:
 
 ```cmd
 npx prisma migrate deploy
 ```
 
-or (for development)
+or for development:
 
 ```cmd
 npx prisma migrate dev
 ```
 
-### Build / Start the application
+### Build / Start application
 
-- For development mode:
+Development mode:
 
 ```cmd
 npm run dev
 ```
 
-- For production build:
+Production build:
 
 ```cmd
 npm run build
 npm start
 ```
 
-### Live
+---
+
+## Live
