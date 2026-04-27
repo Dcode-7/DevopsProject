@@ -70,8 +70,8 @@ export default async function Home() {
             Welcome to Dev Forum
           </CardTitle>
           <CardDescription className="text-lg">
-            Connect, learn, and grow with developers worldwide. Ask questions,
-            share knowledge, and discover opportunities.
+            Connect, learn, and grow with developers worldwide. Ask,
+            share, and discover .
           </CardDescription>
         </CardHeader>
       </Card>
