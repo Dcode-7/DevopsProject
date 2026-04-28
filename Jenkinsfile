@@ -1,16 +1,12 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'node18'
-    }
-
     environment {
         IMAGE_NAME = "devforum-app:latest"
     }
 
     stages {
-        
+
         stage('Docker Build') {
             steps {
                 sh 'docker build -t $IMAGE_NAME .'
