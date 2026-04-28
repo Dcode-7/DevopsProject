@@ -16,7 +16,10 @@ pipeline {
         // 🔥 Load image into Minikube
         stage('Load Image to Minikube') {
             steps {
-                sh 'minikube -p minikube image load $IMAGE_NAME'
+                sh '''
+                export MINIKUBE_HOME=/home/vaish/.minikube
+                minikube -p minikube image load $IMAGE_NAME
+                '''
             }
         }
 
