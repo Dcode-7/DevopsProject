@@ -3,7 +3,7 @@
 # -------------------------
 FROM node:20-alpine AS base
 WORKDIR /app
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat openssl
 
 # -------------------------
 # Install dependencies
@@ -15,16 +15,6 @@ RUN npm ci
 # -------------------------
 # Build app
 # -------------------------
-FROM node:20-alpine AS base
-WORKDIR /app
-RUN apk add --no-cache libc6-compat openssl
-
-# install dependencies
-FROM base AS deps
-COPY package.json package-lock.json* ./
-RUN npm ci
-
-# build app
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -34,7 +24,9 @@ ENV DATABASE_URL="postgresql://postgres:admin123@host.docker.internal:5433/devfo
 RUN npx prisma generate
 RUN npm run build
 
-# production image
+# -------------------------
+# Production image
+# -------------------------
 FROM node:20-alpine AS runner
 WORKDIR /app
 

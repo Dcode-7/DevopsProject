@@ -143,7 +143,44 @@ npm start
 
 ---
 
-## Live
+## 📌 Current Progress Completed
 
+The following modules are completed on local machine:
+
+- ✅ Jenkins CI Pipeline  
+- ✅ GitHub Integration  
+- ✅ Poll SCM Auto Trigger  
+- ✅ Docker Setup  
+- ✅ Project Build Automation using Jenkinsfile  
+
+---
+
+## 📂 Project Workflow Implemented
+
+```text
+Developer pushes code to GitHub
+        ↓
+Jenkins detects changes using Poll SCM
+        ↓
+Runs CI Pipeline
+        ↓
+Installs dependencies
+Generates Prisma Client
+Builds Next.js Project
+        ↓
+Docker image can be built
 ```
+---
+
+## ⚙️ Jenkins Setup
+Jenkins Job Name
 ```
+DevForum
+```
+Trigger Used
+```Poll SCM```
+
+Example Poll Schedule
+```H/2 * * * *```
+
+(Checks GitHub every 2 minutes)
